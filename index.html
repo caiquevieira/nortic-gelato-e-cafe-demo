@@ -31,8 +31,8 @@
     @font-face { font-family: "Figtree"; font-weight: 400 800; font-style: normal; font-display: swap; src: url("assets/fonts/figtree-variavel.woff2") format("woff2"); }
   </style>
 
-  <link rel="stylesheet" href="assets/css/styles.css?v=202610021814">
-  <script src="assets/js/main.js?v=202610021814" defer></script>
+  <link rel="stylesheet" href="assets/css/styles.css?v=202610021832">
+  <script src="assets/js/main.js?v=202610021832" defer></script>
 
   <script type="application/ld+json">
   {
@@ -113,15 +113,16 @@
       <div id="pedido" class="entra mt-8 flex flex-wrap gap-3" style="--atraso: 0.24s">
         <a href="https://www.ifood.com.br/delivery/sao-paulo-sp/nortic-gelato-e-cafe-jaguare/b427b1b7-fb57-4592-89d9-014c0242d57d" target="_blank" rel="noopener"
            class="btn btn-marca btn-lg" data-track="ifood" data-origem="hero">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12l-1 11a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+          <span class="flex h-6 items-center rounded-md bg-sobre-marca px-1.5">
+            <img src="assets/img/logo-ifood.webp" alt="" width="1200" height="634" class="h-3.5 w-auto object-contain">
+          </span>
           Peça no iFood
         </a>
         <a href="https://url-eu.mykeeta.com/n7SjfcMz" target="_blank" rel="noopener"
            class="btn btn-escuro btn-lg" data-track="keeta" data-origem="hero">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12l-1 11a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+          <img src="assets/img/logo-keeta.webp" alt="" width="447" height="447" class="h-6 w-6 rounded-md object-cover">
           Peça no Keeta
         </a>
-        <a href="#servicos" class="btn btn-contorno btn-lg">Ver o cardápio</a>
       </div>
       <p class="entra mt-6 text-sm font-medium text-texto-suave" style="--atraso: 0.32s">Aberto de quarta a domingo, das 12h às 20h · R. Eva Terpins, 250</p>
     </div>
@@ -320,12 +321,14 @@
     <div class="flex shrink-0 flex-wrap gap-3">
       <a href="https://www.ifood.com.br/delivery/sao-paulo-sp/nortic-gelato-e-cafe-jaguare/b427b1b7-fb57-4592-89d9-014c0242d57d" target="_blank" rel="noopener"
          class="btn btn-claro btn-lg" data-track="ifood" data-origem="cta-meio">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12l-1 11a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <span class="flex h-6 items-center rounded-md bg-marca/10 px-1.5">
+          <img src="assets/img/logo-ifood.webp" alt="" width="1200" height="634" class="h-3.5 w-auto object-contain">
+        </span>
         Peça no iFood
       </a>
       <a href="https://url-eu.mykeeta.com/n7SjfcMz" target="_blank" rel="noopener"
          class="btn btn-lg border-2 border-sobre-marca text-sobre-marca hover:bg-sobre-marca/10" data-track="keeta" data-origem="cta-meio">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12l-1 11a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <img src="assets/img/logo-keeta.webp" alt="" width="447" height="447" class="h-6 w-6 rounded-md object-cover">
         Peça no Keeta
       </a>
     </div>
@@ -447,12 +450,11 @@
 </footer>
 <!-- /SECTION: footer -->
 
-<!-- SECTION: whatsapp-flutuante -->
-<a href="https://wa.me/5511918621591?text=Ol%C3%A1!%20Vi%20o%20site%20da%20Nortic%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener"
-   class="wa-flutuante" aria-label="Conversar no WhatsApp" data-track="whatsapp" data-origem="flutuante">
-  <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+<!-- SECTION: pedido-flutuante -->
+<a href="#pedido" class="pedido-flutuante" aria-label="Peça agora pelo iFood ou Keeta">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12l-1 11a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
 </a>
-<!-- /SECTION: whatsapp-flutuante -->
+<!-- /SECTION: pedido-flutuante -->
 
 <!-- SECTION: consentimento -->
 <!-- Só aparece quando há ga4Id ou metaPixelId no CONFIG do main.js -->
