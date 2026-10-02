@@ -31,8 +31,8 @@
     @font-face { font-family: "Figtree"; font-weight: 400 800; font-style: normal; font-display: swap; src: url("assets/fonts/figtree-variavel.woff2") format("woff2"); }
   </style>
 
-  <link rel="stylesheet" href="assets/css/styles.css?v=202610021838">
-  <script src="assets/js/main.js?v=202610021838" defer></script>
+  <link rel="stylesheet" href="assets/css/styles.css?v=202610021845">
+  <script src="assets/js/main.js?v=202610021845" defer></script>
 
   <script type="application/ld+json">
   {
@@ -93,10 +93,10 @@
          aria-label="Instagram de Nortic Gelato &amp; Café" data-track="instagram" data-origem="header">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
       </a>
-      <a href="#pedido" class="btn btn-marca" aria-label="Peça agora pelo iFood ou Keeta">
+      <button type="button" class="btn btn-marca" data-abrir-pedido aria-label="Peça agora pelo iFood ou Keeta">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12l-1 11a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
         <span class="hidden sm:inline">Peça agora</span>
-      </a>
+      </button>
     </div>
   </div>
 </header>
@@ -110,7 +110,7 @@
       <p class="entra text-sm font-bold uppercase tracking-[0.18em] text-gelo-escuro">Gelateria e café · Parque Continental</p>
       <h1 id="hero-titulo" class="entra mt-4 font-titulo text-[2.6rem] font-bold leading-[1.05] text-balance md:text-6xl lg:text-7xl" style="--atraso: 0.08s">Gelato <em class="text-marca">artesanal</em>, sem aromatizantes nem corantes.</h1>
       <p class="entra mt-6 max-w-prose text-lg text-texto-suave md:text-xl" style="--atraso: 0.16s">Casquinha, pote ou tamanho família, além de café e delícias para acompanhar. Temos opções sem lactose e sem açúcar.</p>
-      <div id="pedido" class="entra mt-8 flex flex-wrap gap-3" style="--atraso: 0.24s">
+      <div class="entra mt-8 flex flex-wrap gap-3" style="--atraso: 0.24s">
         <a href="https://www.ifood.com.br/delivery/sao-paulo-sp/nortic-gelato-e-cafe-jaguare/b427b1b7-fb57-4592-89d9-014c0242d57d" target="_blank" rel="noopener"
            class="btn btn-marca btn-lg" data-track="ifood" data-origem="hero">
           <span class="flex h-6 items-center rounded-md bg-sobre-marca px-1.5">
@@ -451,10 +451,35 @@
 <!-- /SECTION: footer -->
 
 <!-- SECTION: pedido-flutuante -->
-<a href="#pedido" class="pedido-flutuante" aria-label="Peça agora pelo iFood ou Keeta">
+<button type="button" class="pedido-flutuante" data-abrir-pedido aria-label="Peça agora pelo iFood ou Keeta">
   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12l-1 11a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
-</a>
+</button>
 <!-- /SECTION: pedido-flutuante -->
+
+<!-- SECTION: modal-pedido -->
+<dialog id="modal-pedido" class="modal-pedido" aria-labelledby="modal-pedido-titulo">
+  <form method="dialog" class="flex justify-end">
+    <button type="submit" class="icone-btn" aria-label="Fechar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </form>
+  <h2 id="modal-pedido-titulo" class="font-titulo text-2xl font-bold">Como você quer pedir?</h2>
+  <div class="mt-6 flex flex-col gap-3">
+    <a href="https://www.ifood.com.br/delivery/sao-paulo-sp/nortic-gelato-e-cafe-jaguare/b427b1b7-fb57-4592-89d9-014c0242d57d" target="_blank" rel="noopener"
+       class="btn btn-marca btn-lg justify-center" data-track="ifood" data-origem="modal">
+      <span class="flex h-6 items-center rounded-md bg-sobre-marca px-1.5">
+        <img src="assets/img/logo-ifood.webp" alt="" width="1200" height="634" class="h-3.5 w-auto object-contain">
+      </span>
+      Peça no iFood
+    </a>
+    <a href="https://url-eu.mykeeta.com/n7SjfcMz" target="_blank" rel="noopener"
+       class="btn btn-escuro btn-lg justify-center" data-track="keeta" data-origem="modal">
+      <img src="assets/img/logo-keeta.webp" alt="" width="447" height="447" class="h-6 w-6 rounded-md object-cover">
+      Peça no Keeta
+    </a>
+  </div>
+</dialog>
+<!-- /SECTION: modal-pedido -->
 
 <!-- SECTION: consentimento -->
 <!-- Só aparece quando há ga4Id ou metaPixelId no CONFIG do main.js -->

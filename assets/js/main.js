@@ -128,5 +128,22 @@ function iniciarTracking() {
   });
 }
 
+function iniciarModalPedido() {
+  const modal = document.getElementById('modal-pedido');
+  if (!modal) return;
+
+  document.querySelectorAll('[data-abrir-pedido]').forEach((b) => {
+    b.addEventListener('click', () => modal.showModal());
+  });
+
+  // Fecha ao escolher um app (abre em nova aba) ou ao clicar fora da caixa
+  // (no ::backdrop, que é o próprio <dialog>)
+  modal.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => modal.close()));
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) modal.close();
+  });
+}
+
 iniciarConsentimento();
 iniciarTracking();
+iniciarModalPedido();
