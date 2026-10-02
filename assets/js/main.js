@@ -10,6 +10,8 @@ const CHAVE_CONSENTIMENTO = 'ul-consentimento';
 // data-track → eventos disparados (ver _docs/padrao-whatsapp.md)
 const EVENTOS = {
   whatsapp: { ga: 'click_whatsapp', meta: 'Contact' },
+  ifood: { ga: 'click_ifood' },
+  keeta: { ga: 'click_keeta' },
   instagram: { ga: 'click_instagram' },
   'avaliar-google': { ga: 'click_avaliar_google' },
   'como-chegar': { ga: 'click_como_chegar', meta: 'FindLocation' },
