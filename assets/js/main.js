@@ -144,6 +144,110 @@ function iniciarModalPedido() {
   });
 }
 
+/* Banner com destaques: o trilho é um scroll-snap nativo (funciona com swipe e sem JS);
+   aqui entram setas, pontos e a troca automática. A troca para quando o visitante interage,
+   quando o mouse ou o foco está no banner e com prefers-reduced-motion. */
+function iniciarBanner() {
+  const raiz = document.querySelector('[data-banner]');
+  const trilho = raiz?.querySelector('[data-banner-trilho]');
+  if (!trilho) return;
+
+  const slides = [...trilho.children];
+  const pontos = [...raiz.querySelectorAll('[data-banner-ponto]')];
+  const controles = raiz.querySelector('[data-banner-controles]');
+  const btnPausa = raiz.querySelector('[data-banner-pausa]');
+  const INTERVALO = 7000;
+  const movimentoReduzido = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let atual = 0;
+  let parado = movimentoReduzido; // parado pelo visitante (ou pela preferência do sistema)
+  let emEspera = false; // mouse ou foco dentro do banner
+  let timer = null;
+
+  if (controles) controles.hidden = false;
+
+  const marcar = (i) => {
+    atual = i;
+    pontos.forEach((p, n) => p.setAttribute('aria-current', n === i ? 'true' : 'false'));
+    // Só o destaque visível recebe foco pelo teclado
+    slides.forEach((s, n) => (s.inert = n !== i));
+  };
+
+  const irPara = (i) => {
+    const alvo = (i + slides.length) % slides.length;
+    trilho.scrollTo({ left: slides[alvo].offsetLeft, behavior: movimentoReduzido ? 'auto' : 'smooth' });
+    marcar(alvo);
+  };
+
+  const atualizarPausa = () => {
+    if (!btnPausa) return;
+    btnPausa.setAttribute('aria-label', parado ? 'Retomar troca automática' : 'Pausar troca automática');
+    btnPausa.querySelector('[data-icone="pausa"]').hidden = parado;
+    btnPausa.querySelector('[data-icone="tocar"]').hidden = !parado;
+  };
+
+  const agendar = () => {
+    clearInterval(timer);
+    timer = null;
+    if (parado || emEspera) return;
+    timer = setInterval(() => {
+      if (!document.hidden) irPara(atual + 1);
+    }, INTERVALO);
+  };
+
+  const pararPeloVisitante = () => {
+    parado = true;
+    atualizarPausa();
+    agendar();
+  };
+
+  // Atualiza o ponto ativo quando o visitante arrasta o banner
+  const observador = new IntersectionObserver(
+    (entradas) => {
+      entradas.forEach((e) => {
+        if (e.isIntersecting) marcar(slides.indexOf(e.target));
+      });
+    },
+    { root: trilho, threshold: 0.6 }
+  );
+  slides.forEach((s) => observador.observe(s));
+
+  raiz.querySelector('[data-banner-anterior]')?.addEventListener('click', () => {
+    pararPeloVisitante();
+    irPara(atual - 1);
+  });
+  raiz.querySelector('[data-banner-proximo]')?.addEventListener('click', () => {
+    pararPeloVisitante();
+    irPara(atual + 1);
+  });
+  pontos.forEach((p) =>
+    p.addEventListener('click', () => {
+      pararPeloVisitante();
+      irPara(Number(p.dataset.bannerPonto));
+    })
+  );
+  btnPausa?.addEventListener('click', () => {
+    parado = !parado;
+    atualizarPausa();
+    agendar();
+  });
+
+  trilho.addEventListener('pointerdown', pararPeloVisitante, { passive: true });
+  raiz.addEventListener('mouseenter', () => { emEspera = true; agendar(); });
+  raiz.addEventListener('mouseleave', () => { emEspera = false; agendar(); });
+  raiz.addEventListener('focusin', () => { emEspera = true; agendar(); });
+  raiz.addEventListener('focusout', (e) => {
+    if (raiz.contains(e.relatedTarget)) return;
+    emEspera = false;
+    agendar();
+  });
+
+  marcar(0);
+  atualizarPausa();
+  agendar();
+}
+
 iniciarConsentimento();
 iniciarTracking();
 iniciarModalPedido();
+iniciarBanner();
