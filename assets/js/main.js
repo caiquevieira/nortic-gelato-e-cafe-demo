@@ -12,6 +12,7 @@ const EVENTOS = {
   whatsapp: { ga: 'click_whatsapp', meta: 'Contact' },
   ifood: { ga: 'click_ifood' },
   keeta: { ga: 'click_keeta' },
+  '99food': { ga: 'click_99food' },
   instagram: { ga: 'click_instagram' },
   'avaliar-google': { ga: 'click_avaliar_google' },
   'como-chegar': { ga: 'click_como_chegar', meta: 'FindLocation' },
