@@ -246,6 +246,31 @@ function iniciarBanner() {
   marcar(0);
   atualizarPausa();
   agendar();
+  igualarTextosBanner(trilho);
+}
+
+/* Celular e tablet: os destaques têm a mesma altura, mas textos de tamanhos diferentes.
+   Iguala a altura do bloco de texto [data-banner-texto] para os botões ficarem na mesma altura
+   nos dois destaques. No PC (lg+) não mexe. Sem JS, os botões só ficam um pouco desalinhados. */
+function igualarTextosBanner(trilho) {
+  const blocos = [...trilho.querySelectorAll('[data-banner-texto]')];
+  if (blocos.length < 2) return;
+  const pc = window.matchMedia('(min-width: 64rem)');
+
+  const igualar = () => {
+    blocos.forEach((b) => (b.style.minHeight = ''));
+    if (pc.matches) return;
+    const maior = Math.max(...blocos.map((b) => b.offsetHeight));
+    blocos.forEach((b) => (b.style.minHeight = `${maior}px`));
+  };
+
+  igualar();
+  document.fonts?.ready.then(igualar);
+  let espera;
+  window.addEventListener('resize', () => {
+    clearTimeout(espera);
+    espera = setTimeout(igualar, 100);
+  });
 }
 
 iniciarConsentimento();
